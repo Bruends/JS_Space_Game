@@ -13,6 +13,9 @@ window.onload = function()
     levels.meteors[1].loadSprite();
     game.setGameControlls();
 
+    // show menu and load hi-score
+    menu.show();
+
     // running game
     game.run(ctx);
 }
