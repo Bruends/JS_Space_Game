@@ -5,6 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game</title>    
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> 
+    <!-- style -->
+    <link rel="stylesheet" href="style.css"></link>    
+</head>
+<body>
+    <div class="game">
+        <!-- game canvas -->
+        <canvas class="canvas" id="canvas"></canvas>
+        <div class="menu" id="menu">
+            <h1>Space Game JS</h1>
+            <p>Hi Score: <spam id="hi-score">0</span></p>
+            <p class="start">Press [Space] to start</p>
+            <small>Controlls: "a" and "d" or arrow keys</small>
+        </div>
+    </div>
+
+    <!-- src scripts -->
+    <script src="src/menu.js"></script>
     <script src="src/background.js"></script>
     <script src="src/enemies.js"></script>
     <script src="src/player.js"></script>
@@ -12,16 +33,5 @@
     <script src="src/levels.js"></script>
     <script src="src/game.js"></script>
     <script src="src/index.js"></script>
-    <style>
-        #canvas {
-            display: block;
-            margin: 2rem auto;
-        }
-    </style>
-</head>
-<body>
-    <div>
-        <canvas id="canvas"></canvas>
-    </div>
 </body>
 </html>

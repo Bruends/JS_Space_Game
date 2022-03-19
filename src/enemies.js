@@ -4,8 +4,7 @@ const meteor = {
     height: 50,
     x: 170,
     y: -50,
-    speed: 5,
-    maxSpeed: 12,
+    speed: 5,   
     sprite: null,
 
     loadSprite(){
@@ -19,7 +18,7 @@ const meteor = {
         // reset y and x position after reach bottom of the screen
         if (this.y > 590) {
             this.y = -90;
-            this.speed = randomBetween(this.maxSpeed - 5, this.maxSpeed);
+
             // variates between 3 diferent x positions
             let nextPosition = randomBetween(1, 3);
             //left

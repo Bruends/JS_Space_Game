@@ -1,0 +1,35 @@
+body {
+    overflow-y: hidden;
+}
+
+.canvas {
+    display: block;
+    margin: 2rem auto;
+}
+
+.menu {    
+    margin: 2rem auto;
+    position: relative;
+    top: -425px;
+    width: 350px;
+    right: auto;
+    font-family: 'Press Start 2P', monospace;
+    color: #9bbc0f;
+    text-align: center;
+}
+
+@keyframes blink {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.start {
+    animation: blink;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+}

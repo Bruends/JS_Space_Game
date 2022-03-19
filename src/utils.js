@@ -9,3 +9,11 @@ function collided(obj1, obj2) {
 function randomBetween(min, max){
    return Math.floor(Math.random() * (max - min + 1) + min);
 }
+
+function setHiScore(score) {
+    localStorage.setItem("hiScore", score);
+}
+
+function getHiScore() {
+    return localStorage.getItem("hiScore") || 0;
+}

@@ -5,37 +5,46 @@ const levels = {
         {...meteor}
     ],
 
-    spawEnemies: function(ctx, score) {
-        // one meteor
-        if(score < 50) {            
-            this.drawMeteor (ctx, 10);
+    spawEnemies: function(ctx, score) {    
+        // increase meteor and background speed based on score
+        // slow
+        if(score < 30) {
+            this.drawMeteor (ctx, 7);
             //bg config
-            background.speed = 5;
+            background.speed = 7;            
         }
 
-        // two meteors
-        if(score >= 50) {            
+        // now a bit faster
+        if(score >= 30 && score < 70) {
+            this.drawMeteor (ctx, 12);            
+            background.speed  = 12;
+        }
+
+        // and faster
+        if(score >= 70 && score < 150) {
             this.drawMeteor (ctx, 17);
-
-            //bg config
-            background.speed = 10;
+            background.speed = 17;            
         }
 
-        // faster        
-        if(score >= 70) {            
-            this.drawMeteor (ctx, 23);
+        // and faster 
+        if(score >= 150 && score < 200) {
+            this.drawMeteor (ctx, 22);
+            background.speed = 22;            
+        }
 
-            //bg config
-            background.speed = 20;
+        // kachow 
+        if(score >= 200) {
+            this.drawMeteor (ctx, 27);
+            background.speed = 27;            
         }
     },
 
-    drawMeteor: function (ctx, maxSpeed) {
-        this.meteors[0].maxSpeed = maxSpeed;
+    drawMeteor: function (ctx, speed) {
+        this.meteors[0].speed = speed;
         this.meteors[0].draw(ctx);
-        this.meteors[0].collision(player, game)
+        this.meteors[0].collision(player, game);
         
-        this.meteors[1].maxSpeed = maxSpeed;
+        this.meteors[1].speed = speed;
         this.meteors[1].draw(ctx);
         this.meteors[1].collision(player, game);
         

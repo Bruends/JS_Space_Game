@@ -11,6 +11,7 @@ window.onload = function()
     player.setControlls();
     levels.meteors[0].loadSprite();
     levels.meteors[1].loadSprite();
+    game.setGameControlls();
 
     // running game
     game.run(ctx);
