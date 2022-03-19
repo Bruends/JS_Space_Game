@@ -9,14 +9,13 @@ const background = {
     },
 
     draw: function(ctx) {
+        //reset bg position
         if(this.y > -40 )
             this.y = -550;
 
-        this.y += this.speed;
-        // console.log(this.y)
+        this.y += this.speed;        
         // draw bg
         ctx.beginPath();
-        ctx.drawImage(this.sprite, 0, this.y);
-        ctx.fill();
+        ctx.drawImage(this.sprite, 0, this.y);        
     }
 }

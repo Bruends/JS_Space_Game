@@ -1,10 +1,11 @@
 // enemy config
-const enemy = {
+const meteor = {
     width: 50,
     height: 50,
-    x: 80,
+    x: 170,
     y: -50,
-    speed: 12,
+    speed: 5,
+    maxSpeed: 12,
     sprite: null,
 
     loadSprite(){
@@ -18,7 +19,7 @@ const enemy = {
         // reset y and x position after reach bottom of the screen
         if (this.y > 590) {
             this.y = -90;
-            this.speed = randomBetween(10, 25);
+            this.speed = randomBetween(this.maxSpeed - 5, this.maxSpeed);
             // variates between 3 diferent x positions
             let nextPosition = randomBetween(1, 3);
             //left
@@ -37,11 +38,8 @@ const enemy = {
     },
 
     draw: function (ctx) {
-        this.fall(this.speed);
-        // ctx.fillStyle = "#ff0000";
-        ctx.beginPath();
-        ctx.drawImage(this.sprite, this.x, this.y);
-        ctx.fill();
+        this.fall(this.speed);        
+        ctx.drawImage(this.sprite, this.x, this.y);        
     },
 
     collision: function (player, game) {

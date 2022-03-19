@@ -5,6 +5,7 @@ const player = {
     x: 170,
     y: 470,
     sprite: null,    
+    pos: 2,
 
     loadSprite(){
         this.sprite = new Image();
@@ -14,26 +15,39 @@ const player = {
     },
 
     draw: function (ctx) {
-        // ctx.fillStyle = "#00ff00";
-        ctx.beginPath();
-        ctx.drawImage(this.sprite, this.x, this.y);
-        ctx.fill();
+        // ctx.fillStyle = "#00ff00";        
+        ctx.drawImage(this.sprite, this.x, this.y);        
     },
 
-    setControlls: function(player) {
+    // change the player
+    // between 3 different positions on screen
+    changePos: function(newPos) {
+        if(newPos == 1) {
+            this.pos = 1;
+            this.x = 20;
+        }
+        
+        if(newPos == 2) {
+            this.pos = 2;
+            this.x = 170;
+        }
+
+        if(newPos == 3) {
+            this.pos = 3;
+            this.x = 300;
+        }
+    },
+
+    setControlls: function() {
         // controls
-        document.addEventListener('keydown', (event) => {
-            if (event.key == 'w' || event.key == 'ArrowUp') {
-                if(player.x < canvas.width - player.width)
-                        player.x = 170;
-            }
+        document.addEventListener('keydown', (event) => {            
             if (event.key == 'ArrowRight' || event.key == 'd') {
-                if(player.x < canvas.width - player.width)
-                        player.x = 300;
+                if(this.pos != 3)
+                    this.changePos(this.pos + 1);
             }
             if (event.key == 'ArrowLeft' || event.key == 'a') {
-                if(player.x > 0)
-                    player.x = 20;
+                if(this.pos != 1)
+                    this.changePos(this.pos - 1);
             }
         });    
     }

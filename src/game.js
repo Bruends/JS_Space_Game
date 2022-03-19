@@ -1,56 +1,39 @@
-window.onload = function()
-{
-    // getting canvas context
-    const ctx = document.querySelector("#canvas").getContext("2d");
-    
-    // canvas config
-    const canvas = {
-       width: 400,
-       height: 550
-    }
-    ctx.canvas.width  = 400;
-    ctx.canvas.height = 550;
 
-    background.loadSprite();
-    player.loadSprite();
-    enemy.loadSprite();
-    player.setControlls(player);
-    
-    // game config
-    const game = {
-        run: function(ctx) {
-            // game recursive loop
-            const animate = () => {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                background.draw(ctx);
-                // draw player
-                player.draw(ctx);
+// game config
+const game = {
+    score: 0,
 
-                // draw enemies
-                enemies.forEach((enemy) => {
-                    enemy.draw(ctx);
-                    enemy.collision(player, game);
-                });               
-                    
-                gameLoop = requestAnimationFrame(animate);
-            }
+    run: function(ctx) {
+        setInterval(() => {
+            this.score++;
+        }, 200)
+        this.draw(ctx);
+    },
 
-            gameLoop = requestAnimationFrame(animate)
+    draw: function(ctx) {
+        // game recursive loop
+        const animate = () => {
+            // clear canvas 
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        },
+            // draw bg
+            background.draw(ctx);
+
+            // draw characters
+            player.draw(ctx);
+            levels.spawEnemies(ctx, this.score)
+
+            // draw score
+            ctx.font = "25px Arial MS";
+            ctx.fillStyle = "#00ff00";
+            ctx.textAlign = "center";
+            ctx.fillText(this.score, 350, 50);
+            gameLoop = requestAnimationFrame(animate);
+        }
+
+        gameLoop = requestAnimationFrame(animate)
+    },
         stop: function(){
-            player.x = 170
-            enemies.forEach(enemy => enemy.y = -50);
+            this.score = 0;
         }
     }
-
-    
-
-    // enemies array
-    const enemies = [
-        {...enemy},
-        {...enemy}, 
-    ]
-
-    game.run(ctx);
-}
